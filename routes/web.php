@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ use App\Http\Controllers\PostsController;
 
 Auth::routes();
 
-Route::group(['prefix' => '/'] , function(){
+Route::group(['prefix' => '/' , "middleware" => ['auth']] , function(){
     
     Route::get('' , [HomeController::class , 'home'])->name('home');
 
